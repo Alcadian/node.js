@@ -6,8 +6,8 @@ const sever = http.createServer((req, res) => {
   /* console.log(req.url, req.method); */
 
   //loadash
-  const num = _.random(0, 20);
-  console.log(num);
+/*   const num = _.random(0, 20);
+  console.log(num); */
 
   //setting header content type
   res.setHeader("content-type", "text/html");
