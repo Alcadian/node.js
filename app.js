@@ -3,23 +3,26 @@ const express = require("express");
 //setting up express app
 const app = express();
 
+//register view engine
+app.set('view engine', 'ejs')
+
 //listening for request
 app.listen(3000);
 
 //responding
 app.get("/", (req, res) => {
-  res.sendFile("/view/index.html", { root: __dirname });
+  res.render('index')
 });
 app.get("/about", (req, res) => {
-  res.sendFile("/view/about.html", { root: __dirname });
+  res.render('about')
 });
 
 //redirects
 app.get('/about-us', (req, res) => {
-  res.redirect('/about');
+  res.render('about')
 });
 
 //404 
 app.use((rep, res) =>{
-  res.status(404).sendFile('./view/404.html', { root: __dirname })
+  res.status(404).render('404')
 })
