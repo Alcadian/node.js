@@ -1,4 +1,5 @@
 const express = require("express");
+const morgan = require('morgan')
 
 //setting up express app
 const app = express();
@@ -8,6 +9,17 @@ app.set('view engine', 'ejs')
 
 //listening for request
 app.listen(3000);
+app.use(morgan('dev'))
+
+
+
+app.use((req, res, next)=>{
+  console.log('new request made');
+  console.log('host: ', req.hostname);
+  console.log('path ', req.path);
+  console.log('mathod ', req.method);
+  next()
+})
 
 //responding
 app.get("/", (req, res) => {
